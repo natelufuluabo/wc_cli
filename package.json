@@ -3,13 +3,16 @@
     "ccwc": "./bin/index.js"
   },
   "type": "module",
-  "name": "word_counter_cli",
+  "name": "wc_cli",
   "version": "1.0.0",
-  "description": "",
+  "description": "CLI used to replicate the functionnalities of wc",
   "main": "./bin/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Nathan Kalala",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "yargs": "^17.7.2"
+  }
 }

@@ -1,9 +1,12 @@
 {
+  "bin": {
+    "ccwc": "./bin/index.js"
+  },
   "type": "module",
   "name": "word_counter_cli",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./bin/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

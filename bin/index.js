@@ -1,5 +1,5 @@
 import path from 'path';
-import { executeCommand } from './wordCount.js';
+import { executeCommand } from '../wordCount.js';
 
 const cliArguments = process.argv[2];
 

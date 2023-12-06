@@ -1,9 +1,8 @@
 #! /usr/bin/env node 
 
-import path from 'path';
 import yargs from 'yargs';
-import { hideBin } from 'yargs/helpers'
-import { executeCommand } from '../wordCount.js';
+import { hideBin } from 'yargs/helpers';
+import { executeCommand } from '../utils_functions/main.js';
 
 const usage = "\nUsage: ccwc <flag> file to run the command on"
 
@@ -33,4 +32,4 @@ const options = yargs(hideBin(process.argv))
     .help(true)
     .argv;
 
-console.log(process.argv[2]);
+executeCommand(options);

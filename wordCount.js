@@ -3,7 +3,7 @@ import { promisify } from 'util';
 
 const readFileAsync = promisify(fs.readFile);
 
-export async function executeCommand(filePath) {
+export async function executeCountFlag(filePath) {
   try {
     // Read the contents of the file asynchronously
     const data = await readFileAsync(filePath, 'utf8');

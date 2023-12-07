@@ -38,4 +38,5 @@ const options = yargs(hideBin(process.argv))
     .help(true)
     .argv;
 
-await executeCommand(options, process.argv[3]);
+if (process.argv.length === 4) await executeCommand(options, process.argv[3]);
+if (process.argv.length === 3) await executeCommand(options, process.argv[2]);

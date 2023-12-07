@@ -16,6 +16,10 @@ export async function executeCommand(options, fileName) {
     } else if (options.count_characters) {
         console.log(await countCharacters(absolutePath), fileName);
     } else {
-        console.log('Executing count_bytes, count_words and count_lines functions')
+        console.log(
+            await executeLineFlag(absolutePath), 
+            await executeCountFlag(absolutePath),
+            await countBytes(absolutePath), fileName
+        )
     }
 }

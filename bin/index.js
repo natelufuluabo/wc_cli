@@ -38,5 +38,31 @@ const options = yargs(hideBin(process.argv))
     .help(true)
     .argv;
 
-if (process.argv.length === 4) await executeCommand(options, process.argv[3]);
-if (process.argv.length === 3) await executeCommand(options, process.argv[2]);
+// // Execution with flag
+// if (process.argv.length === 4) await executeCommand(options, process.argv[3]);
+// // Execution with no flag
+// if (process.argv.length === 3) await executeCommand(options, process.argv[2]);
+
+const executeApp = async (filePath) => {
+    await executeCommand(options, filePath);
+};
+
+// Check if the stdin is coming from a pipe
+if (!process.stdin.isTTY) {
+    let data = '';
+    process.stdin.on('data', (chunk) => {
+        data += chunk;
+    });
+
+    process.stdin.on('end', async () => {
+        const fileContent = data.trim();
+        await executeApp(fileContent);
+    });
+} else {
+    if (process.argv.length === 4) {
+        await executeCommand(options, process.argv[3]);
+    }
+    if (process.argv.length === 3) {
+        await executeCommand(options, process.argv[2]);
+    }
+}

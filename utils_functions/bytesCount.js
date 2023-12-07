@@ -1,12 +1,8 @@
-import fs from 'fs';
-import { promisify } from 'util';
-
-const readFileAsync = promisify(fs.readFile);
+import { getFileContent } from "./getFileContent.js";
 
 export async function countBytes(filePath) {
     try {
-        // Read the contents of the file asynchronously
-        const content = await readFileAsync(filePath);
+        const content = await getFileContent(filePath);
 
         // Count the bytes in the content
         const byteCount = Buffer.from(content, 'utf8').length;

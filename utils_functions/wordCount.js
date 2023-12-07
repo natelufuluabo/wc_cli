@@ -1,15 +1,9 @@
-import fs from 'fs';
-import { promisify } from 'util';
-
-const readFileAsync = promisify(fs.readFile);
+import { getFileContent } from "./getFileContent.js";
 
 export async function executeCountFlag(filePath) {
   try {
-    // Read the contents of the file asynchronously
-    const data = await readFileAsync(filePath, 'utf8');
-
     // Count the number of words in the file content
-    const wordCount = countWords(data);
+    const wordCount = countWords(await getFileContent(filePath));
 
     return wordCount;
   } catch (err) {

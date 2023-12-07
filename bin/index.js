@@ -38,11 +38,6 @@ const options = yargs(hideBin(process.argv))
     .help(true)
     .argv;
 
-// // Execution with flag
-// if (process.argv.length === 4) await executeCommand(options, process.argv[3]);
-// // Execution with no flag
-// if (process.argv.length === 3) await executeCommand(options, process.argv[2]);
-
 const executeApp = async (filePath) => {
     await executeCommand(options, filePath);
 };

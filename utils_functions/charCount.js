@@ -1,15 +1,9 @@
-import fs from 'fs';
-import { promisify } from 'util';
-
-const readFileAsync = promisify(fs.readFile);
+import { getFileContent } from "./getFileContent.js";
 
 export async function countCharacters(filePath) {
     try {
-      // Read the contents of the file asynchronously
-      const content = await readFileAsync(filePath, 'utf8');
-  
       // Count the number of characters in the content
-      const charCount = content.length;
+      const charCount = (await getFileContent(filePath)).length;
   
       return charCount;
     } catch (error) {

@@ -1,6 +1,6 @@
 import fs from 'fs/promises';
 
-export async function getFileContentOrData(input) {
+export async function getFileContent(input) {
   try {
     // Check if the input is a file path
     const isFilePath = await fs.stat(input).then((stats) => stats.isFile());

@@ -1,12 +1,8 @@
-import fs from 'fs';
-import { promisify } from 'util';
-
-const readFileAsync = promisify(fs.readFile);
+import { getFileContent } from "./getFileContent.js";
 
 export async function executeLineFlag(filePath) {
   try {
-    // Read the contents of the file asynchronously
-    const content = await readFileAsync(filePath, 'utf8');
+    const content = await getFileContent(filePath);
 
     // Detect line jumps based on newline characters
     return (content.match(/\n/g) || []).length;

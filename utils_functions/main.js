@@ -1,25 +1,25 @@
-import path from 'path';
-import { executeCountFlag } from './wordCount.js';
-import { executeLineFlag } from './lineCount.js';
+import { getFileContent } from './getFileContent.js';
+import { countWords } from './wordCount.js';
+import { countLine } from './lineCount.js';
 import { countBytes } from './bytesCount.js';
 import { countCharacters } from './charCount.js';
 
 export async function executeCommand(options, fileName) {
-    const absolutePath = path.resolve(fileName);
+    const text = await getFileContent(fileName);
 
     if (options.count_words) {
-        console.log(await executeCountFlag(absolutePath), fileName);
+        console.log(countWords(text));
     } else if (options.count_bytes) {
-        console.log(await countBytes(absolutePath), fileName);
+        console.log(countBytes(text));
     } else if (options.count_lines) {
-        console.log(await executeLineFlag(absolutePath), fileName);
+        console.log(countLine(text));
     } else if (options.count_characters) {
-        console.log(await countCharacters(absolutePath), fileName);
+        console.log(countCharacters(text));
     } else {
         console.log(
-            await executeLineFlag(absolutePath), 
-            await executeCountFlag(absolutePath),
-            await countBytes(absolutePath), fileName
+            countLine(text), 
+            executeCountFlag(text),
+            countBytes(text),
         )
     }
 }

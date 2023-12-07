@@ -3,7 +3,7 @@ import fs from 'fs/promises';
 export async function getFileContent(input) {
   try {
     // Check if the input is a file path
-    const isFilePath = await fs.stat(input).then((stats) => stats.isFile());
+    const isFilePath = typeof input === 'string' && !input.includes('\n');
 
     if (isFilePath) {
       // If it's a file path, read the file and return its content

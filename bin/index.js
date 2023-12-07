@@ -38,20 +38,21 @@ const options = yargs(hideBin(process.argv))
     .help(true)
     .argv;
 
-const executeApp = async (filePath) => {
-    await executeCommand(options, filePath);
+const executeApp = async (file) => {
+    await executeCommand(options, file);
 };
 
 // Check if the stdin is coming from a pipe
 if (!process.stdin.isTTY) {
     let data = '';
-    process.stdin.on('data', (chunk) => {
-        data += chunk;
+    process.stdin.on('data', async (chunk) => {
+        const buffer = Buffer.from(chunk);
+        const text = buffer.toString('utf8');
+        data += text;
     });
 
     process.stdin.on('end', async () => {
-        const fileContent = data.trim();
-        await executeApp(fileContent);
+        await executeApp(data);
     });
 } else {
     if (process.argv.length === 4) {

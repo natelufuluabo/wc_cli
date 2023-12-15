@@ -18,7 +18,7 @@ export async function executeCommand(options, fileName) {
     } else {
         console.log(
             countLine(text), 
-            executeCountFlag(text),
+            countWords(text),
             countBytes(text),
         )
     }

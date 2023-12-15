@@ -1,4 +1,5 @@
 import fs from 'fs/promises';
+import path from 'path';
 
 export async function getFileContent(input) {
   try {
@@ -7,7 +8,7 @@ export async function getFileContent(input) {
 
     if (isFilePath) {
       // If it's a file path, read the file and return its content
-      const fileContent = await fs.readFile(input, 'utf8');
+      const fileContent = await fs.readFile(path.resolve(input), 'utf8');
       return fileContent;
     } else {
       // If it's not a file path, assume it's content and return it
